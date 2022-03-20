@@ -33,7 +33,7 @@ createConnection().then(async (connection) => {
     return res.send(product);
   });
 
-  app.put("/api/products/:id", async (req: Request, res: Response) => {
+  app.put("/api/products/:id", async (req: Request | any, res: Response) => {
     const product = await productRepository.findOne(req.params.id);
     productRepository.merge(product, req.body);
     const result = await productRepository.save(product);
