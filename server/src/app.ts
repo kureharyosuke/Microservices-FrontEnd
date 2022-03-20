@@ -1,5 +1,6 @@
-import * as express from "express";
-import { Request, Response } from "express";
+import express, { Application, Request, Response, NextFunction } from "express"; // tsconfig.json: "esModuleInterop": true
+// import * as express from "express";
+// import { Request, Response } from "express";
 import * as cors from "cors";
 import { createConnection } from "typeorm";
 
@@ -7,7 +8,7 @@ createConnection().then(async (connection) => {
   const productRepository = connection.getRepository("Product");
 
   // create express app
-  const app = express();
+  const app: Application = express();
 
   app.use(
     cors({
@@ -17,7 +18,7 @@ createConnection().then(async (connection) => {
 
   app.use(express.json());
 
-  app.get("/api/products", async (req: Request, res: Response) => {
+  app.get("/api/products", async (req: Request, res: Response, next: NextFunction) => {
     const products = await productRepository.find();
     res.json(products);
   });
@@ -28,7 +29,7 @@ createConnection().then(async (connection) => {
     return res.send(result);
   });
 
-  app.get("/api/products/:id", async (req: Request, res: Response) => {
+  app.get("/api/products/:id", async (req: Request | any, res: Response) => {
     const product = await productRepository.findOne(req.params.id);
     return res.send(product);
   });

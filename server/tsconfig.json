@@ -3,7 +3,11 @@
     "lib": ["es5", "es6", "dom"],
     "target": "es5",
     "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    // "strict": true,
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "typeRoots": ["./src/@types", "./node_modules/@types"]
