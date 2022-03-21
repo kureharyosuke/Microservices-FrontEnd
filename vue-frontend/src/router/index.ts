@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Main from "@/pages/Main.vue"; // 1. default import
+import Products from "@/pages/admin/Products.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -10,7 +11,8 @@ const routes: Array<RouteRecordRaw> = [
     path: "/admin",
     name: "admin",
     component: () => import("@/pages/admin/Admin.vue"),
-    children: [{ path: "products", component: () => import("@/pages/admin/Products.vue") }],
+    // children: [{ path: "/products", component: () => import("@/pages/admin/Products.vue") }],
+    children: [{ path: "products", component: Products }],
   },
   {
     path: "/about",
