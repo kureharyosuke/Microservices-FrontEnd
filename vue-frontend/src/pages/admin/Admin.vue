@@ -1,15 +1,8 @@
 <template>
+  <Nav />
   <div class="container-fluid">
     <div class="row">
-      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-        <div class="sidebar-sticky">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link active" href="#"> Products </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <Menu />
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
         <div class="table-responsive">
@@ -145,8 +138,17 @@
 </template>
 
 <script>
+/*---- 1. import components ----- */
+import Nav from "@/components/Nav.vue";
+import Menu from "@/components/Menu.vue";
+
 export default {
   name: "Admin",
+  components: {
+    /*---- 2. setup components ----- */
+    Nav,
+    Menu,
+  },
 };
 </script>
 
