@@ -1,13 +1,16 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-// import Admin from "@/pages/admin/Admin.vue";
-//
+import Main from "@/pages/Main.vue"; // 1. default import
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
+    component: Main, // 2. default import
+  },
+  {
+    path: "/admin",
     name: "admin",
-    component: () => import("@/pages/Admin.vue"),
-    children: [{ path: "/", component: () => import("@/pages/admin/Products.vue") }],
+    component: () => import("@/pages/admin/Admin.vue"),
+    children: [{ path: "products", component: () => import("@/pages/admin/Products.vue") }],
   },
   {
     path: "/about",
